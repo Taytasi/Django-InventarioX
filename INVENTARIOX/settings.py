@@ -32,8 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'rest_framework',
-    'productos', # app de productos
-    'sitio',
+    'Producto', # app de productos
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -18,15 +18,17 @@ from django.contrib import admin
 from django.urls import path, include
 
 from rest_framework import routers
-from productos.views import ProductoViewSet
+from Producto.views import ProductoViewSet
 
 router = routers.DefaultRouter()
-router.register(r'productos', ProductoViewSet)
+router.register(r'Producto', ProductoViewSet)
 #aqui voy a crear esas ventanas a las que quiero que el usuario tenga acceso, el home, el about, etc.
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('productos/', include('productos.urls')),
+    path('', include('Producto.urls')),
+    path('Producto/', include('Producto.urls')),
     path("api/", include(router.urls)),
+
 ]
