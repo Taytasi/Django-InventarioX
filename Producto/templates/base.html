@@ -2,11 +2,15 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'dist/style.css'%}">
     <title>{% block title %}Sistema de Inventario{% endblock %}</title>
 </head>
 <body>
+    <body class="bg-gray-100">
+
     <header>
-        <h1>Inventario</h1>
+        <h1 class="text-4xl font-bold text-blue-600 text-center mt-10">Inventario</h1>
         <nav>
             <a href="/">Inicio</a> |
             <a href="{% url 'productos' %}">Productos</a>

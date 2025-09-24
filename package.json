@@ -1,0 +1,24 @@
+{
+  "name": "djangoproyect",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch:css":"npx @tailwindcss/cli -i ./INVENTARIOX/static/src/style.css -o ./INVENTARIOX/static/dist/style.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Taytasi/Django-InventarioX.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Taytasi/Django-InventarioX/issues"
+  },
+  "homepage": "https://github.com/Taytasi/Django-InventarioX#readme",
+  "description": "",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.13",
+    "tailwindcss": "^4.1.13"
+  }
+}
