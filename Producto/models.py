@@ -9,6 +9,20 @@ class Producto(models.Model):
         return f"{self.nombre} - {self.precio}"
 
     class Meta:
-        db_table = "producto_producto"  # 👈 nombre exacto de mi tabla en MySQL
+        db_table = "producto_producto"  # 👈 mantiene tu tabla actual en MySQL
+
+
+# 🔹 Nuevo modelo para pedidos de reabastecimiento
+class PedidoReabastecimiento(models.Model):
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE, related_name="pedidos_reabastecimiento")
+    cantidad_sugerida = models.PositiveIntegerField()
+    fecha = models.DateTimeField(auto_now_add=True)
+    procesado = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"Pedido de {self.producto.nombre} ({self.cantidad_sugerida} unidades)"
+    
+class Meta:
+        db_table = "pedido_reabastecimiento"  # 👈 nombre explícito de tabla en MySQL
 
 
