@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<div 
+  class="hero min-h-[70vh]" 
+  style="background-image: url('https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp');"
+>
+  <div class="hero-overlay bg-opacity-60"></div>
+  <div class="hero-content text-center text-neutral-content">
+    <div class="max-w-md">
+      <h1 class="mb-5 text-5xl font-bold">Sistema de Inventario</h1>
+      <p class="mb-5">
+        Controla tus productos, gestiona el stock y mantén la organización de tu negocio de manera sencilla y eficiente.
+      </p>
+      <a href="{% url 'productos' %}" class="btn btn-primary">Ver productos</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

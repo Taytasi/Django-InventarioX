@@ -3,17 +3,82 @@
 {% block title %}Listado de Productos{% endblock %}
 
 {% block content %}
-<h2>Productos Disponibles</h2>
+<div class="bg-white shadow rounded-lg p-6">
 
-<ul>
-    {% for producto in productos %}
-        <li>
-            <strong>{{ producto.nombre }}</strong> - 
-            ${{ producto.precio }} 
-            (Stock: {{ producto.stock }})
-        </li>
-    {% empty %}
-        <p>No hay productos registrados.</p>
-    {% endfor %}
-</ul>
+  <h2 class="text-2xl font-bold text-blue-700 mb-4">Productos Disponibles</h2>
+
+  <!-- Formulario -->
+  <div class="mb-6 bg-blue-50 p-4 rounded-lg shadow">
+    <h3 class="font-semibold text-blue-800 mb-3">Agregar producto</h3>
+    <form method="post" action="{% url 'productos' %}" class="flex flex-wrap gap-4 items-end">
+      {% csrf_token %}
+      <input type="hidden" name="create_product" value="1">
+      <div>
+        {{ form.nombre.label_tag }}
+        {{ form.nombre }}
+      </div>
+      <div>
+        {{ form.precio.label_tag }}
+        {{ form.precio }}
+      </div>
+      <div>
+        {{ form.stock.label_tag }}
+        {{ form.stock }}
+      </div>
+      <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Agregar</button>
+    </form>
+  </div>
+
+  <!-- Tabla -->
+  <div class="overflow-x-auto">
+    <table class="min-w-full border border-gray-300 rounded-lg overflow-hidden shadow">
+      <thead class="bg-gradient-to-r from-blue-500 to-blue-700 text-white">
+        <tr>
+          <th class="px-4 py-2 text-left">Imagen</th>
+          <th class="px-4 py-2 text-left">ID</th>
+          <th class="px-4 py-2 text-left">Nombre</th>
+          <th class="px-4 py-2 text-left">Precio</th>
+          <th class="px-4 py-2 text-left">Stock</th>
+          <th class="px-4 py-2 text-left">Acciones</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-200 bg-white">
+        {% for producto in productos %}
+        <tr class="hover:bg-blue-50">
+          <td class="px-4 py-2">
+            {# Usar image_url si existe; si no, fallback con seed por producto.id para imagen única por producto #}
+            {% if producto.image_url %}
+              <img src="{{ producto.image_url }}" alt="Imagen {{ producto.nombre }}" class="w-20 h-16 object-cover rounded" />
+            {% else %}
+              <img src="https://picsum.photos/seed/{{ producto.id }}/400/300" alt="Imagen {{ producto.nombre }}" class="w-20 h-16 object-cover rounded" />
+            {% endif %}
+          </td>
+          <td class="px-4 py-2">{{ producto.id }}</td>
+          <td class="px-4 py-2">{{ producto.nombre }}</td>
+          <td class="px-4 py-2">${{ producto.precio }}</td>
+          <td class="px-4 py-2">
+            {{ producto.stock }}
+            {% if producto.stock < 5 %}
+              <span class="ml-2 inline-block px-2 py-0.5 text-xs font-semibold text-red-800 bg-red-100 rounded">Bajo</span>
+            {% endif %}
+          </td>
+          <td class="px-4 py-2 space-x-2">
+            <a href="{% url 'producto_edit' producto.id %}" class="px-3 py-1 bg-yellow-400 text-black rounded hover:bg-yellow-500">Editar</a>
+            <form method="post" action="{% url 'producto_delete' producto.id %}" class="inline" onsubmit="return confirm('¿Eliminar producto {{ producto.nombre }}?');">
+              {% csrf_token %}
+              <button type="submit" class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600">Eliminar</button>
+            </form>
+          </td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="6" class="px-4 py-2 text-center text-gray-500">No hay productos registrados.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
 {% endblock %}
+
+

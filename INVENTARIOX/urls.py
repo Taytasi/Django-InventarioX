@@ -16,19 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
 from rest_framework import routers
 from Producto.views import ProductoViewSet
 
 router = routers.DefaultRouter()
-router.register(r'Producto', ProductoViewSet)
-#aqui voy a crear esas ventanas a las que quiero que el usuario tenga acceso, el home, el about, etc.
-
+router.register(r'productos', ProductoViewSet)   # en minúsculas
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('Producto.urls')),
-    path('Producto/', include('Producto.urls')),
-    path("api/", include(router.urls)),
-
+    path('', include('Producto.urls')),    # la app en la raíz
+    path('api/', include(router.urls)),
 ]

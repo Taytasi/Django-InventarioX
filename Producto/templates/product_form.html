@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Producto{% endblock %}
+
+{% block content %}
+<div class="bg-white shadow rounded-lg p-6 max-w-lg mx-auto">
+  <h2 class="text-xl font-bold text-blue-700 mb-4">Editar producto: {{ producto.nombre }}</h2>
+
+  <form method="post" class="space-y-4">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="flex justify-between">
+      <a href="{% url 'productos' %}" class="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500">Cancelar</a>
+      <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Guardar cambios</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

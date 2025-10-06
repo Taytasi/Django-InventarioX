@@ -3,22 +3,53 @@
 <head>
     <meta charset="UTF-8">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'dist/style.css'%}">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- daisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
     <title>{% block title %}Sistema de Inventario{% endblock %}</title>
 </head>
-<body>
-    <body class="bg-gray-100">
+<body class="bg-gray-100 font-sans flex flex-col min-h-screen">
 
-    <header>
-        <h1 class="text-4xl font-bold text-blue-600 text-center mt-10">Inventario</h1>
-        <nav>
-            <a href="/">Inicio</a> |
-            <a href="{% url 'productos' %}">Productos</a>
-        </nav>
+    <!-- Header -->
+    <header class="bg-blue-600 shadow">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-white">Inventario</h1>
+            <nav class="space-x-4">
+                <a href="{% url 'inicio' %}" class="text-white hover:text-yellow-300">Inicio</a>
+                <a href="{% url 'productos' %}" class="text-white hover:text-yellow-300">Productos</a>
+            </nav>
+        </div>
     </header>
 
-    <main>
+    <!-- Contenido principal -->
+    <main class="max-w-6xl mx-auto p-6 flex-grow">
+
+        <!-- Mensajes Django -->
+        {% if messages %}
+            <div class="mb-4">
+                {% for message in messages %}
+                    <div class="p-3 mb-2 rounded-lg shadow 
+                        {% if message.tags == 'success' %} bg-green-100 text-green-800 border border-green-300{% endif %}
+                        {% if message.tags == 'warning' %} bg-yellow-100 text-yellow-800 border border-yellow-300{% endif %}
+                        {% if message.tags == 'error' or message.tags == 'danger' %} bg-red-100 text-red-800 border border-red-300{% endif %}
+                    ">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
         {% block content %}{% endblock %}
     </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-200 text-center py-4">
+        <p>Sistema de Inventario - Proyecto SENA © 2025</p>
+    </footer>
+
 </body>
 </html>
+
+
+
