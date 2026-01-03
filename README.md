@@ -1,0 +1,47 @@
+# Inventory Management System
+
+## 📌 Project Overview
+This project is a **Web-Based Inventory Management System** developed as an academic project for the **Software Analysis and Development Technologist program at SENA (Colombia)**.
+
+The system is designed to manage inventory operations efficiently, covering product management, stock movements, orders, and user administration.
+
+---
+
+## 🚀 Features
+
+- Product management (CRUD)
+- Inventory entries and exits
+- Order management
+- Client and supplier management
+- Category management
+- User management and authentication
+- RESTful API for system operations
+- Responsive UI with Tailwind CSS
+
+---
+
+## 🛠️ Technologies Used
+
+- **Python**
+- **Django**
+- **Django REST Framework**
+- **MySQL**
+- **Tailwind CSS**
+- **Git & GitHub**
+
+---
+
+## 🧱 Project Structure
+
+- Backend developed with Django following MVC principles
+- REST API for data interaction
+- Relational database design using MySQL
+- Modular and scalable architecture
+
+---
+
+## ⚙️ Installation & Setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/your-repository-name.git
