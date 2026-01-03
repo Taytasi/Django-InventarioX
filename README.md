@@ -45,3 +45,25 @@ The system is designed to manage inventory operations efficiently, covering prod
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/your-repository-name.git
+
+2. Create and activate a virtual environment:
+
+python -m venv env
+source env/bin/activate  # Windows: env\Scripts\activate
+
+
+3. Install dependencies:
+
+pip install -r requirements.txt
+
+
+4. Configure database settings in settings.py.
+
+5. Run migrations:
+
+python manage.py migrate
+
+
+6. Start the development server:
+
+python manage.py runserver
