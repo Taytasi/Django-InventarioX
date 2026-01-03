@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow text-center">
+    <h2 class="text-xl font-bold mb-2">Sesión cerrada</h2>
+    <p>Has cerrado sesión correctamente.</p>
+    <a href="{% url 'login' %}" class="btn btn-primary mt-4">Iniciar sesión de nuevo</a>
+  </div>
+{% endblock %}

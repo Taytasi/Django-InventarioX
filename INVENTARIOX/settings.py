@@ -57,7 +57,7 @@ ROOT_URLCONF = 'INVENTARIOX.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -132,3 +132,16 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [BASE_DIR / "static"]
+
+# Redirecciones después de login/logout
+LOGIN_REDIRECT_URL = 'productos'       # a dónde ir tras iniciar sesión
+LOGOUT_REDIRECT_URL = 'inicio'         # a dónde ir tras cerrar sesión
+LOGIN_URL = 'login'                    # nombre de la url de login
+
+# Configuración de emails (para recuperación de contraseña)
+# En desarrollo mostrará los correos en la consola
+# Looking to send emails in production? Check out our Email API/SMTP product!
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = 'ec35f8c5798d9d'
+EMAIL_HOST_PASSWORD = '6c5128c88d9c46'
+EMAIL_PORT = '2525'

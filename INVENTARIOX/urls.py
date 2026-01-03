@@ -17,13 +17,26 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from Producto.views import ProductoViewSet
+from Producto.views import ProductoViewSet, register
 
+# Rutas de la API con DRF
 router = routers.DefaultRouter()
-router.register(r'productos', ProductoViewSet)   # en minúsculas
+router.register(r'productos', ProductoViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('Producto.urls')),    # la app en la raíz
+
+    # App principal
+    path('', include('Producto.urls')),
+
+    # API REST
     path('api/', include(router.urls)),
+
+    # Autenticación integrada de Django (login, logout, reset password, etc.)
+    path('accounts/', include('django.contrib.auth.urls')),
+
+    # Registro personalizado
+    path('accounts/register/', register, name='register'),
 ]
+
+
