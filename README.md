@@ -44,7 +44,8 @@ The system is designed to manage inventory operations efficiently, covering prod
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/your-repository-name.git
+   git clone https://github.com/Taytasi/Django-InventarioX
+
 
 2. Create and activate a virtual environment:
 
